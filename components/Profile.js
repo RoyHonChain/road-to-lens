@@ -7,6 +7,12 @@ export default function Profile(props) {
   // When displayFullProfile is true, we show more info.
   const displayFullProfile = props.displayFullProfile;
 
+  //const picOriginal =`https://ipfs.infura.io/ipfs/+${profile.picture.original.url.slice(7)}`;
+  //const pic ="https://ipfs.infura.io/ipfs/"+profile.picture.url.slice(7);
+  const picIPFS = profile.picture.original.url;
+  const picUrl = `https://ipfs.filebase.io/ipfs/${picIPFS.slice(7)}`;
+  console.log(picUrl);
+
   return (
     <div className="p-8">
       <Link href={`/profile/${profile.id}`}>
@@ -16,9 +22,7 @@ export default function Profile(props) {
               {profile.picture ? (
                 <img
                   src={
-                    profile.picture.original
-                      ? profile.picture.original.url
-                      : profile.picture.uri
+                    picUrl
                   }
                   className="h-48 w-full object-cover md:h-full md:w-48"
                 />
